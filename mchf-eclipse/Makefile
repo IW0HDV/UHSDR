@@ -315,11 +315,15 @@ help:
 
 .PHONY: all clean docs docs-clean help
 
+git_ver:
+	set -e ;\
+	GIT_VER=$$(./git-version-gen.sh .tarball-version) ;\
+	echo "#define GIT_VER \"$$GIT_VER\"" > git.h
 
 all:  firmware $(TRX_ID).handbook
 	# compile the firmware ARM-executables .bin / .elf and .dfu, generate .map 
 
-firmware:  $(FIRMWARE) 
+firmware:  git_ver $(FIRMWARE) git_ver
 	# compile the firmware ARM-executables .bin / .elf and .dfu, generate .map 
 	@echo "using \c"
 	$(CC) --version | grep gcc

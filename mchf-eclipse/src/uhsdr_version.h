@@ -26,9 +26,9 @@
 #else										// Standard Bootloader
   #define	UHSDR_BOOT_VER			UHSDR_BOOT_VERS
 #endif
-
+#include "git.h"
 // trailing characters are needed for identifying version and building date+time in binary
-#define	    UHSDR_VERSION           "fwv-"UHSDR_VER_MAJOR"."UHSDR_VER_MINOR"."UHSDR_VER_RELEASE
+#define	    UHSDR_VERSION           "fwv-"GIT_VER
 #define	    UHSDR_BUILD_DAT         "fwt-"__DATE__ " - " __TIME__
 #define	    UHSDR_LICENCE           "GNU GPLv3"
 #define     UHSDR_REPO              "github.com/df8oe/UHSDR"
