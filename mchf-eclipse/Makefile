@@ -316,9 +316,8 @@ help:
 .PHONY: all clean docs docs-clean help
 
 git_ver:
-	set -e ;\
-	GIT_VER=$$(./git-version-gen.sh .tarball-version) ;\
-	echo "#define GIT_VER \"$$GIT_VER\"" > git.h
+	@GIT_VER=$$(./git-version-gen.sh .tarball-version) ; echo "#define GIT_VER \"$$GIT_VER\"" > git.h ;\
+	echo $$GIT_VER
 
 all:  firmware $(TRX_ID).handbook
 	# compile the firmware ARM-executables .bin / .elf and .dfu, generate .map 
